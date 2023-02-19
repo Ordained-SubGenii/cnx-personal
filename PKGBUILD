@@ -1,6 +1,6 @@
 # Maintainer: feindsdeluna 
 pkgname=cnx-personal-git
-pkgver=0.3.0.r5.g43b25c9
+pkgver=0.3.0.r6.g5da2a4f
 pkgrel=1
 pkgdesc='cnx - A simple X11 status bar for use with simple WMs in Rust. custom git pkg'
 arch=('x86_64')

@@ -30,7 +30,7 @@ fn main() -> Result<()> {
         padding: Padding::new(0.0, 0.0, 0.0, 0.0),
     };
 
-    let mut cnx = Cnx::new(Position::Bottom);
+    let mut cnx = Cnx::new(Position::Top);
 
     let battery_render = Box::new(|battery_info: BatteryInfo| {
         let percentage = battery_info.capacity;
@@ -73,7 +73,7 @@ fn main() -> Result<()> {
     let active_attr = Attributes {
         font: Font::new("JetBrains Mono Regular 10"),
         fg_color: Color::white(),
-        bg_color: Some(Color::blue()),
+        bg_color: Some(Color::green()),
         padding: Padding::new(8.0, 8.0, 0.0, 0.0),
     };
     let inactive_attr = Attributes {
@@ -81,7 +81,7 @@ fn main() -> Result<()> {
         ..active_attr.clone()
     };
     let non_empty_attr = Attributes {
-        fg_color: Color::blue(),
+        fg_color: Color::green(),
         ..inactive_attr.clone()
     };
     let pager_attrs = PagerAttributes {

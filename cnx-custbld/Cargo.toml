@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "cnx",
+    "cnx-contrib",
+    "cnx-bin"
+]

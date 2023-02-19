@@ -25,7 +25,7 @@ fn pango_markup_single_render(color: Color, start_text: String) -> String {
 fn main() -> Result<()> {
     let attr = Attributes {
         font: Font::new("JetBrains Mono Regular 10"),
-        fg_color: Color::gray(),
+        fg_color: Color::grey(),
         bg_color: None,
         padding: Padding::new(0.0, 0.0, 0.0, 0.0),
     };

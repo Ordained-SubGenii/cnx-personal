@@ -1,11 +1,11 @@
 # Maintainer: feindsdeluna 
-pkgname=cnx-git
-pkgver=0.3.0.r300.g7845d99
+pkgname=cnx-personal-git
+pkgver=0.3.0.r2.geebe4e4
 pkgrel=1
-pkgdesc='cnx - A simple X11 status bar for use with simple WMs in Rust'
+pkgdesc='cnx - A simple X11 status bar for use with simple WMs in Rust. custom git pkg'
 arch=('x86_64')
 # url='https://github.com/mjkillough/cnx'
-url='https://github.com/Ordained-SubGenii/cnx'
+url='https://github.com/Ordained-SubGenii/cnx-personal'
 license=('MIT')
 makedepends=('cargo' 'git')
 depends=('libxcb' 'xcb-util' 'xcb-util-wm' 'xcb-util-keysyms' 'pango' 'cairo')

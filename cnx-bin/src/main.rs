@@ -5,6 +5,7 @@ use cnx::widgets::*;
 use cnx::{Cnx, Position};
 use cnx_contrib::widgets::battery::*;
 use cnx_contrib::widgets::disk_usage::*;
+use cnx_contrib::widgets::leftwm::*;
 use cnx_contrib::widgets::*;
 /// use weathernoaa::weather::WeatherInfo;
 
@@ -91,6 +92,14 @@ fn main() -> Result<()> {
     };
     let pager = Pager::new(pager_attrs);
 
+    let leftwm_attr = LeftWMAttributes {
+        focused,
+         empty,
+         busy,
+         visible,
+    };
+    
+    cnx.add_widget(LeftWM::new("eDP1".to_string(), leftwm_attr));
     cnx.add_widget(pager);
     cnx.add_widget(ActiveWindowTitle::new(attr.clone()));
     cnx.add_widget(cpu);

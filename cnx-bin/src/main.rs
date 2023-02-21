@@ -25,12 +25,31 @@ fn pango_markup_single_render(color: Color, start_text: String) -> String {
 
 fn main() -> Result<()> {
     let attr = Attributes {
-        font: Font::new("JetBrains Mono Regular 10"),
+        font: Font::new("JetBrains Mono Regular 12"),
         fg_color: Color::white(),
         bg_color: None,
         padding: Padding::new(0.0, 0.0, 0.0, 0.0),
     };
 
+    let focused = Attributes {
+        font: Font::new("JetBrains Mono Regular 12"),
+        fg_color: Color::white(),
+        bg_color: Some(Color::green()),
+        padding: Padding::new(8.0, 8.0, 0.0, 0.0),
+    };
+    
+    let empty = Attributes {
+        bg_color: None,
+        ..focused.clone()
+    };
+    let busy = Attributes {
+        fg_color: Color::blue(),
+        ..empty.clone()
+    };
+    let visible = Attributes {
+        fg_color: Color::red(),
+        ..empty.clone()
+    };
     let mut cnx = Cnx::new(Position::Top);
 
     let battery_render = Box::new(|battery_info: BatteryInfo| {
@@ -71,36 +90,14 @@ fn main() -> Result<()> {
 
     let disk_usage = disk_usage::DiskUsage::new(attr.clone(), "/home".into(), Some(disk_render));
 
-    let active_attr = Attributes {
-        font: Font::new("JetBrains Mono Regular 10"),
-        fg_color: Color::white(),
-        bg_color: Some(Color::green()),
-        padding: Padding::new(8.0, 8.0, 0.0, 0.0),
-    };
-    let inactive_attr = Attributes {
-        bg_color: None,
-        ..active_attr.clone()
-    };
-    let non_empty_attr = Attributes {
-        fg_color: Color::green(),
-        ..inactive_attr.clone()
-    };
-    let pager_attrs = PagerAttributes {
-        active_attr,
-        inactive_attr,
-        non_empty_attr,
-    };
-    let pager = Pager::new(pager_attrs);
-
     let leftwm_attr = LeftWMAttributes {
         focused,
-         empty,
-         busy,
-         visible,
+        visible,
+        busy,
+        empty,
     };
     
     cnx.add_widget(LeftWM::new("eDP1".to_string(), leftwm_attr));
-    cnx.add_widget(pager);
     cnx.add_widget(ActiveWindowTitle::new(attr.clone()));
     cnx.add_widget(cpu);
     cnx.add_widget(disk_usage);
